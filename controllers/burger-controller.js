@@ -2,7 +2,7 @@ var express = require("express");
 
 var router = express.Router(); 
 
-var burger = require("../models/burger");
+var burger = require("../models/burger.js");
 
 router.get("/", function (req, res){
     burger.selectAll(function(data){
@@ -14,19 +14,19 @@ router.get("/", function (req, res){
     }); 
 }); 
 
-router.post("/api/bugers", function(req,res){
+router.post("/api/burgers", function(req,res){
     burger.insertOne(req.body.burger_name, function(result){
-        res.redirect("/"); 
+        res.redirect("/")
     });
 });
 
 router.put("/api/burgers/:id", function (req, res){
     let id = req.params.id; 
-    burger.updateOne(id, function(result){
+    burger.updateOne(id, req.body, function(result){
         if (result.changedRows === 0) {
             return res.status(404).end(); 
         }
-        res.redirect("/"); 
+        res.json({ id: result }); 
     }); 
 }); 
 

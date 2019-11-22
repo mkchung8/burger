@@ -22,7 +22,7 @@ var orm = {
         });
     },
 
-    updateOne: function (id, cb) {
+    updateOne: function (id, data, cb) {
         var queryString = `UPDATE burgers SET devoured = true WHERE id = ?`;
         connection.query(queryString, [id], function (err, results) {
             if (err) {

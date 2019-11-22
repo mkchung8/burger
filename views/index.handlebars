@@ -1,9 +1,43 @@
-<h1>EAT DA BURGERS</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6" id="uneaten">
+            <h1>Burgers To Eat: </h1>
+            <ul>
+                {{#each burgers}}
+                {{#unless devoured}}
+                <li>
+                    <p>{{ id }}. {{ burger_name }} </p>
+                    <button data-burgerid="{{id}}" class="btn btn-danger mb-2 eatBtn">Eat This
+                        Burger!</button>
+                </li>
+                {{/unless}}
+                {{/each}}
+            </ul>
+        </div>
+        <div class="col-md-6" id="eaten">
+            <h1>Burgers Already Eaten: </h1>
+            <ul>
+                {{#each burgers}}
+                {{#if devoured}}
+                <li>
+                    <p>{{ id }}. {{ burger_name }}</p>
+                </li>
+                {{/if}}
+                {{/each}}
+            </ul>
+        </div>
+    </div>
 
-<ul>
-    {{#each burger}}
-    <li>
-        <p>{{id}}. {{buger}}</p>
-    </li>
-    {{/each}}
-</ul>
+        <form>
+            <h1>Enter New Burger To Eat: </h1>
+            <div class="form-group">
+                <label for="inputBugerName">Burger Name:</label>
+                <input type="text" class="form-control" id="inputBurgerName"
+                    placeholder="Enter Name of Burger">
+            </div>
+            <button type="submit" class="btn btn-warning mb-3" id="submit">Submit Burger</button>
+          
+        </form>
+  <img class="mx-auto d-block" width="350" height="100" src="./assets/img/bottom.jpg">
+        
+</div>
