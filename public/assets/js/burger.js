@@ -15,8 +15,8 @@ $(document).ready(function () {
             })
             .then(function () {
                 console.log(`updated id ${id}`);
-                location.reload();
             });
+            location.reload();
     });
 
     $("#submit").on("click", function(event){
